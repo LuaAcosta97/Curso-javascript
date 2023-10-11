@@ -1,99 +1,186 @@
-// // declaracion
-// let Productos; ${Productos}
-// let Contactarnos; ${contactarnos}
-// let Salir; ${salir}
 
+  
+// // declaracion de variables y funcion
+
+let promptResult;
+
+let precioTotal = 0;
+
+let mediodepagoResult = ''
+
+function calculateMediodepago(medioDePago){
+  switch (medioDePago) {
+    case "1":
+      let cuotasSinInteres = precioTotal / 3;
+      mediodepagoResult = (`
+        Felicitaciones, tu compra esta completa
+        Vas a pagar tu compra en 3 cuotas sin interés de $ ${cuotasSinInteres} cada una.
+      `); 
+      break;
+  
+    case "2":
+      let cuotasConInteres = (precioTotal * 1.50) / 6;
+      mediodepagoResult = (`
+        Felicitaciones, tu compra esta completa
+        Vas a pagar tu compra en 6 cuotas conn interés de $ ${cuotasConInteres} cada una.
+      `);
+      break;
+  
+    case "3":
+      let precioAlContadoConDescuento =  precioTotal * 0.80 ;
+      mediodepagoResult = (`
+        Felicitaciones, tu compra esta completa
+        Vas a pagar tu compra en efectivo con 20% de decuento, el total es: $ ${precioAlContadoConDescuento}.
+      `);
+      break;
+  
+    default:
+      alert(`Error al calcular el pago`);
+      break;
+  }
+}
+
+
+
+// Comienzo del algoritmo
 
 let IngreseNombre = prompt("Hola, Cual es tu nombre?");
-  alert("Bienvenido/a " + IngreseNombre);
-  
-let op = prompt(`
+alert("Bienvenido/a " + IngreseNombre);
+
+promptResult = prompt(`
   Que se te ofrece? 
     1. Ver nuestros productos. 
     2. Contactarnos. 
     3. Salir. 
-    Elije una opcion (num)...
+    - Seleccion (num)...
     `);
- 
-while (op)
-console.log ("op")
-    switch (op) {
-      case "1":
-        alert(`Podras ver nuestros productos`);
-        break;
-  
-      case "2":
-        alert(`Comunicate al -54 11-0230-9045`);
-        break;
-  
-        case "3":
-        alert(`GRACIAS POR TU VISITA, ESPERAMOS VERTE PRONTO!!!`);
-        break;
 
-      default:
-        alert(`Elija una opcion (num)...`);
-        break;
+switch (promptResult) {
+  case "1":
+    alert(`Podras ver nuestros productos`);
+    break;
+
+  case "2":
+    alert(`Comunicate al -54 11-0230-9045`);
+    break;
+
+  case "3":
+    alert(`GRACIAS POR TU VISITA, ESPERAMOS VERTE PRONTO!!!`);
+    break;
+
+  default:
+    alert(`Elija una opcion (num)...`);
+    break;
 }
-         
-    
-  //    let Productos = prompt(" Selecciona el
-  //    Accesorios, higiene, cosmeticos, indumentaria
-  //  ") 
 
-// let productos = "Productos disponibles";
+let productList = prompt(`
+    Elegi el producto que te interese:
+      1. Vestido floreado amarillo - Precio: $10500
+      2. Remera musculosa azul con volados - Precio: $4200
+      3. Sandalias de verano - Precio: $18700
+      - Seleccion (num)...
+   `);
 
-// switch (Productos) {
-//   case "Accesorios":
-//     console.log("Aritos, Collares y pulseras de todo tipo");
-//     break;
+switch (productList) {
+  case "1":
+    console.log("vestido agregado al carrito");
+    precioTotal = precioTotal + 10500;
+    break;
 
-//   case "Higiene":
-//     console.log("Jabones, cremas de baño, Shampoos, acondicionadores, toallitas, desodorantes");
-//     break;
+  case "2":
+    console.log("remera agregada al carrito");
+    precioTotal = precioTotal + 4200;
+    break;
 
-//   case "Cosmeticos":
-//     console.log("Crema para el cuerpo, limpiadores faciales,  protectores solares ");
-//     break;
+  case "3":
+    console.log("sandalias agregadas al carrito");
+    precioTotal = precioTotal + 18700;
+    break;
 
-//   default:
-//     console.log("");
-//     break;
-// }
+  default:
+    console.log("La opcion seleccionada no es valida");
+    break;
+}
 
-// let opcion = prompt(`
-//   Ingrese la opción requerida
+console.log("Total actualizado: $" + precioTotal);
 
-//   1. Ropa Mujer
-//   2. Ropa Hombre
-// `);
+let productList2 = prompt(`
+    El total de tu carrito hasta ahora es: $${precioTotal}
 
-// while (opcion != "salir") {
-//   switch (opcion) {
-//     case "1":
-//       alert(`Tenemos camisas y pantalones`);
-//       break;
+    Elegi el producto que te interese:
+      1. Falda blanca con volados - Precio: $4599
+      2. Pantalon ancho de verano - Precio: $8999
+      3. Short tipo pollera color nude - Precio: $6700
+      - Seleccion (num)...
+   `);
 
-//     case "2":
-//       alert(`Tenemos zapatos y pantalones`);
-//       break;
+switch (productList2) {
+  case "1":
+    console.log("falda agregada al carrito");
+    precioTotal = precioTotal + 4599;
+    break;
 
-//     default:
-//       alert("Opción incorrecta");
-//       break;
-//   }
+  case "2":
+    console.log("pantalon agregada al carrito");
+    precioTotal = precioTotal + 8999;
+    break;
 
-//   let opcion = prompt(`
-//     Ingrese la opción requerida
+  case "3":
+    console.log("short agregadas al carrito");
+    precioTotal = precioTotal + 6700;
+    break;
 
-//     1. Ropa Mujer
-//     2. Ropa Hombre
-//   `);
-// }
-// if (Productos === "1"); {
-//   alert("Podras ver nuestros productos");
-//   Productos = Accesorios, higiene, cosmeticos, indumentaria
-// } else if (contactarnos == "2"); {
-//   alert("Comunicate al -54 11-0230-9045");
-// } else (salir || "3"); {
-//   alert("GRACIAS POR TU VISITA, ESPERAMOS VERTE PRONTO!!! ;)");
-// }
+  default:
+    console.log("La opcion seleccionada no es valida");
+    break;
+}
+
+console.log("Total actualizado: $" + precioTotal);
+
+let productList3 = prompt(`
+    El total de tu carrito hasta ahora es: $${precioTotal}
+
+    Elegi el producto que te interese:
+      1. Sombrero Capelina de Rafia - Precio: $3999
+      2. Bikini azul metalizado - Precio: $5200
+      3. Vestido enterizo transparente - Precio: $7000
+      Elije una opcion (num)...
+   `);
+
+switch (productList3) {
+  case "1":
+    console.log("sombrero agregado al carrito");
+    precioTotal = precioTotal + 3999;
+    break;
+
+  case "2":
+    console.log("bikini agregada al carrito");
+    precioTotal = precioTotal + 4200;
+    break;
+
+  case "3":
+    console.log("vestido agregadas al carrito");
+    precioTotal = precioTotal + 7000;
+    break;
+
+  default:
+    console.log("La opcion seleccionada no es valida");
+    break;
+}
+
+console.log("Total actualizado: $" + precioTotal);
+
+let MediodePago = prompt(`
+  El total de tu carrito es: $ ${precioTotal}
+  
+  Elegí como pagar tu compra:
+    1. Tarjeta de credito - 3 cuotas sin interés
+    2. Tarjeta de credito - 6 cuotas con interés(50% de interés)
+    3. Efectivo - 20% de descuento
+`);
+
+console.log("Medio de pago elegido: " + MediodePago);
+
+calculateMediodepago(MediodePago);
+
+alert(mediodepagoResult)
