@@ -1,6 +1,27 @@
 
   
-// // declaracion de variables y funcion
+// // declaracion de variables y funciones
+  const listProd = {
+        vestidos:"Leonel",
+        Remeras:"negro",
+        Sandalias: "blancas"
+        
+    }
+
+class Producto extends listProd{
+  constructor(titulo, color, precio) {
+    this.nombre = titulo;
+    this.color = color;
+    this.precio = precio;
+  }
+}
+  
+  const producto1 = new producto("blusa", "rosita", 4500);
+  const producto2 = new producto(
+    "falda entablada",
+    "cuadros azules, gris y blanco",
+    "6900"
+  );
 
 let promptResult;
 
@@ -40,6 +61,7 @@ function calculateMediodepago(medioDePago){
   }
 }
 
+const productos = ["falda", "blusa", "sueter", "chaqueta", "zapatos"];
 
 
 // Comienzo del algoritmo
@@ -72,6 +94,7 @@ switch (promptResult) {
     alert(`Elija una opcion (num)...`);
     break;
 }
+
 
 let productList = prompt(`
     Elegi el producto que te interese:
@@ -121,12 +144,12 @@ switch (productList2) {
     break;
 
   case "2":
-    console.log("pantalon agregada al carrito");
+    console.log("pantalon agregado al carrito");
     precioTotal = precioTotal + 8999;
     break;
 
   case "3":
-    console.log("short agregadas al carrito");
+    console.log("short agregado al carrito");
     precioTotal = precioTotal + 6700;
     break;
 
@@ -159,7 +182,7 @@ switch (productList3) {
     break;
 
   case "3":
-    console.log("vestido agregadas al carrito");
+    console.log("vestido agregadp al carrito");
     precioTotal = precioTotal + 7000;
     break;
 
