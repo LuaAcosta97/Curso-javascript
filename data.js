@@ -1,5 +1,7 @@
 
-export const arrayProductos = [
+  let carrito = [];
+
+  export const arrayProductos = [
     {
         name: 'Vestido',
         price:10500,
@@ -82,72 +84,89 @@ export const arrayProductos = [
     }
 ];
 
+
 // Asi es el filtrado por categoria
+export function filterByCategory(category){
+    let filteredProducts = arrayProductos.filter((item)=>item.category === "otoño" ) 
+return filteredProducts
+} 
 
-// let filteredProducts = arrayProductos.filter((item)=>item.category === "otoño" ) 
-// // console.log(filteredProducts)
-
-// // // Asi se hace una busqueda 
-// // let foundProduct = arrayProductos.find((item) => item.name === "Vestido")
-// // // console.log(foundProduct)
-
-// export function filterByCategory(category){
-//     let filteredProducts = arrayProductos.filter((item)=>item.category === "otoño" ) 
-// return filteredProducts
-// } 
-// // cree una variable para guardar el resultado de la funcion
-// // let result = filterByCategory("otoño")
-
-
-
-// // const resultFilter = (category)
-
-// function iterador(filterByCategory, funcion ) {
-//         for (const filteredProducts of filterByCategory) {
-//           funcion(filteredProducts);
-//         }
-// } 
-// iterador(filteredProducts, category );
-
-
-// function mostrar(postre) {
-    //     console.log(`me podes hacer ${postre}`);
-    // }
+  
+export function calculateMediodepago(medioDePago){
+    switch (medioDePago) {
+      case "1":
+        let cuotasSinInteres = precioTotal / 3;
+        mediodepagoResult = (`
+          Felicitaciones, tu compra esta completa
+          Vas a pagar tu compra en 3 cuotas sin interés de $ ${cuotasSinInteres} cada una.
+        `); 
+        break;
     
-    // function iterador(arreglo, funcion) {
-    //     for (const postre of arreglo) {
-    //         funcion(postre);
-    //     }
-    // }
+      case "2":
+        let cuotasConInteres = (precioTotal * 1.50) / 6;
+        mediodepagoResult = (`
+          Felicitaciones, tu compra esta completa
+          Vas a pagar tu compra en 6 cuotas conn interés de $ ${cuotasConInteres} cada una.
+        `);
+        break;
+    
+      case "3":
+        let precioAlContadoConDescuento =  precioTotal * 0.80 ;
+        mediodepagoResult = (`
+          Felicitaciones, tu compra esta completa
+          Vas a pagar tu compra en efectivo con 20% de decuento, el total es: $ ${precioAlContadoConDescuento}.
+        `);
+        break;
+    
+      default:
+        alert(`Error al calcular el pago`);
+        break;
+    }
+  }
 
-// export function calculateMediodepago(medioDePago){
-//     switch (medioDePago) {
-//       case "1":
-//         let cuotasSinInteres = precioTotal / 3;
-//         mediodepagoResult = (`
-//           Felicitaciones, tu compra esta completa
-//           Vas a pagar tu compra en 3 cuotas sin interés de $ ${cuotasSinInteres} cada una.
-//         `); 
-//         break;
-    
-//       case "2":
-//         let cuotasConInteres = (precioTotal * 1.50) / 6;
-//         mediodepagoResult = (`
-//           Felicitaciones, tu compra esta completa
-//           Vas a pagar tu compra en 6 cuotas conn interés de $ ${cuotasConInteres} cada una.
-//         `);
-//         break;
-    
-//       case "3":
-//         let precioAlContadoConDescuento =  precioTotal * 0.80 ;
-//         mediodepagoResult = (`
-//           Felicitaciones, tu compra esta completa
-//           Vas a pagar tu compra en efectivo con 20% de decuento, el total es: $ ${precioAlContadoConDescuento}.
-//         `);
-//         break;
-    
-//       default:
-//         alert(`Error al calcular el pago`);
-//         break;
-//     }
-//   }
+  
+ function buscarProducto(id){
+      let productoEncontrado = arrayProductos.find((item) => item.id == id);
+  
+      return productoEncontrado;
+  }
+  
+  
+ function agregarAlCarrito(id) {
+      carrito.push(buscarProducto(id));
+  }
+  
+  
+ function armarMensajeParaPromptCatalogo(array){
+      let stringAlert = `Elija el producto que desea comprar, escriba el numero correspondiente: 
+      
+  `;
+  
+      array.forEach((element) => {
+          stringAlert =
+            stringAlert +
+            element.id + '. ' + element.name + ' - Precio: $' + element.price + '\n';
+        });
+  
+      return stringAlert;
+  }
+  
+  
+  function mostrarPrompt(){
+      for (let i = 0; i < 3; i++) {
+          let userChoice = prompt(armarMensajeParaPromptCatalogo(arrayProductos));
+        
+          agregarAlCarrito(userChoice)
+        }
+  }
+  
+  mostrarPrompt();
+  
+  
+//   let stringParaMostrarUnProducto = `${arrayProductos[3].id}. ${arrayProductos[3].name} - Precio: $${arrayProductos[3].price} \n`;
+  
+//   let stringNormal = arrayProductos[3].id + '. ' + arrayProductos[3].name + ' - Precio: $' + arrayProductos[3].price + '\n' + arrayProductos[3].id + '. ' + arrayProductos[3].name + ' - Precio: $' + arrayProductos[3].price 
+  
+//   //console.log(stringNormal); 
+  
+  console.log({carrito})

@@ -1,11 +1,10 @@
-// import { arrayProductos, filterByCategory } from "./data";
+// import { filterByCategory , narrayProductos , calculateMediodepago} from "./data";
 
 let promptResult;
 
 let precioTotal = 0;
 
 let mediodepagoResult = ''
-
 
 
 // Comienzo del algoritmo
@@ -39,10 +38,13 @@ switch (promptResult) {
     break;
 }
 
-alert (arrayProductos);
 
 let productList = prompt(`
     Elegi el producto que te interese:
+      1. Vestido floreado amarillo - Precio: $10500
+      2. Remera musculosa azul con volados - Precio: $4200
+      3. Sandalias de verano - Precio: $18700
+      - Seleccion (num)...
    `);
 
 switch (productList) {
