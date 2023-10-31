@@ -1,27 +1,4 @@
-
-  
-// // declaracion de variables y funciones
-  const listProd = {
-        vestidos:"Leonel",
-        Remeras:"negro",
-        Sandalias: "blancas"
-        
-    }
-
-class Producto extends listProd{
-  constructor(titulo, color, precio) {
-    this.nombre = titulo;
-    this.color = color;
-    this.precio = precio;
-  }
-}
-  
-  const producto1 = new producto("blusa", "rosita", 4500);
-  const producto2 = new producto(
-    "falda entablada",
-    "cuadros azules, gris y blanco",
-    "6900"
-  );
+// import { arrayProductos, filterByCategory } from "./data";
 
 let promptResult;
 
@@ -29,39 +6,6 @@ let precioTotal = 0;
 
 let mediodepagoResult = ''
 
-function calculateMediodepago(medioDePago){
-  switch (medioDePago) {
-    case "1":
-      let cuotasSinInteres = precioTotal / 3;
-      mediodepagoResult = (`
-        Felicitaciones, tu compra esta completa
-        Vas a pagar tu compra en 3 cuotas sin interés de $ ${cuotasSinInteres} cada una.
-      `); 
-      break;
-  
-    case "2":
-      let cuotasConInteres = (precioTotal * 1.50) / 6;
-      mediodepagoResult = (`
-        Felicitaciones, tu compra esta completa
-        Vas a pagar tu compra en 6 cuotas conn interés de $ ${cuotasConInteres} cada una.
-      `);
-      break;
-  
-    case "3":
-      let precioAlContadoConDescuento =  precioTotal * 0.80 ;
-      mediodepagoResult = (`
-        Felicitaciones, tu compra esta completa
-        Vas a pagar tu compra en efectivo con 20% de decuento, el total es: $ ${precioAlContadoConDescuento}.
-      `);
-      break;
-  
-    default:
-      alert(`Error al calcular el pago`);
-      break;
-  }
-}
-
-const productos = ["falda", "blusa", "sueter", "chaqueta", "zapatos"];
 
 
 // Comienzo del algoritmo
@@ -95,13 +39,10 @@ switch (promptResult) {
     break;
 }
 
+alert (arrayProductos);
 
 let productList = prompt(`
     Elegi el producto que te interese:
-      1. Vestido floreado amarillo - Precio: $10500
-      2. Remera musculosa azul con volados - Precio: $4200
-      3. Sandalias de verano - Precio: $18700
-      - Seleccion (num)...
    `);
 
 switch (productList) {
