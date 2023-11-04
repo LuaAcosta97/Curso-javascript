@@ -84,10 +84,18 @@
     }
 ];
 
+export function mostrarPromptCategory(){
+  let userChoice = prompt(`
+  Elige una categoria para ver los productos disponibles:
+    1. Otoño
+    2. Verano
+  `);
+  return userChoice;
+}
 
 // Asi es el filtrado por categoria
 export function filterByCategory(category){
-    let filteredProducts = arrayProductos.filter((item)=>item.category === "otoño" ) 
+    let filteredProducts = arrayProductos.filter((item)=>item.category === category ) 
 return filteredProducts
 } 
 
@@ -137,21 +145,25 @@ export function calculateMediodepago(medioDePago){
   }
   
   
+
+  
  function armarMensajeParaPromptCatalogo(array){
-      let stringAlert = `Elija el producto que desea comprar, escriba el numero correspondiente: 
-      
-  `;
-  
-      array.forEach((element) => {
-          stringAlert =
-            stringAlert +
-            element.id + '. ' + element.name + ' - Precio: $' + element.price + '\n';
-        });
-  
-      return stringAlert;
+  let stringCatalogoAutomatico = `Elija el producto que desea comprar, escriba el numero correspondiente:
+  `
+  // i= iterador 
+      for (let i = 0; i < array.length; i++) {
+          stringCatalogoAutomatico = stringCatalogoAutomatico + `${array[i].id}. ${array[i].name} - Precio: $${array[i].price} \n`
+      }
+      return stringCatalogoAutomatico
+     
   }
   
   
+function armarPrompt() {
+  let stringNormal = " ";
+}
+
+
   function mostrarPrompt(){
       for (let i = 0; i < 3; i++) {
           let userChoice = prompt(armarMensajeParaPromptCatalogo(arrayProductos));
