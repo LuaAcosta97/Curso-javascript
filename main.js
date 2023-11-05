@@ -1,10 +1,12 @@
-import { mostrarPromptCategory, filterByCategory , arrayProductos , calculateMediodepago} from "./data";
+import {productSelectionFlow, keepShoppingQuestion, showPromptProducts, filterByCategory , arrayProductos , calculateMediodepago} from "./data.js";
 
 let promptResult;
 
 let precioTotal = 0;
 
 let mediodepagoResult = ''
+
+let chosenCategory;
 
 
 // Comienzo del algoritmo
@@ -22,7 +24,7 @@ promptResult = prompt(`
 
 switch (promptResult) {
   case "1":
-    mostrarPromptCategory()
+    productSelectionFlow()
     break;
 
   case "2":
@@ -37,6 +39,9 @@ switch (promptResult) {
     alert(`Elija una opcion (num)...`);
     break;
 };
+
+
+
 
 
 console.log("Total actualizado: $" + precioTotal);
