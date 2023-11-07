@@ -1,4 +1,4 @@
-import {productSelectionFlow, keepShoppingQuestion, showPromptProducts, filterByCategory , arrayProductos , calculateMediodepago} from "./data.js";
+import {productSelectionFlow, keepShoppingQuestion, showPromptProducts, filterByCategory , arrayProductos , calculateTotalPrice, calculateMediodepago} from "./data.js";
 
 let promptResult;
 
@@ -10,10 +10,11 @@ let chosenCategory;
 
 
 // Comienzo del algoritmo
-
+// PASO 1: Le pedimos el nombre al usuario
 let IngreseNombre = prompt("Hola, Cual es tu nombre?");
+// PASO2: mostramos un alert con la bienvenida al usuario
 alert("Bienvenido/a " + IngreseNombre);
-
+// PASO 3:Le preguntamos al usuario que quiere hacer en la pagina.
 promptResult = prompt(`
   Que se te ofrece? 
     1. Ver nuestros productos. 
@@ -23,7 +24,9 @@ promptResult = prompt(`
     `);
 
 switch (promptResult) {
+  // PASO 4: Dependiendo de la respuesta del usuario, le vamos a mostrar cualquiera de los casos.
   case "1":
+    // PASO 5: Llamamos a la funcion que inicie el flujo de seleccion de productos
     productSelectionFlow()
     break;
 
@@ -41,10 +44,9 @@ switch (promptResult) {
 };
 
 
-
-
-
 console.log("Total actualizado: $" + precioTotal);
+
+precioTotal = calculateTotalPrice();
 
 let MediodePago = prompt(`
   El total de tu carrito es: $ ${precioTotal}
@@ -57,6 +59,6 @@ let MediodePago = prompt(`
 
 console.log("Medio de pago elegido: " + MediodePago);
 
-calculateMediodepago(MediodePago);
+mediodepagoResult = calculateMediodepago(MediodePago, precioTotal);
 
 alert(mediodepagoResult)

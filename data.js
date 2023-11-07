@@ -93,15 +93,18 @@ export const arrayProductos = [
 ];
 
 export function productSelectionFlow() {
+  // PASO 6: creamos variable bandera(varible boleano para definir si un proceso inicia o no),
+  //  para definir si el usuario quiere seguir comprando o no.
   let stopShopping = false;
-
+// PASO 7:  Iniciamos ciclo while, para mostrar la categoria y el catalogo de productos.
+// El ciclo se detendra cuando el usuario quiera dejar de comprar.
   while (!stopShopping) {
     let userChoice = prompt(`
   Elige una categoria para ver los productos disponibles:
     1. Verano
     2. Otoño
   `);
-
+// PASO 8: llamamos a la funcion para mostrar el catalogo de productos dependiendo la categoria elegida.
     showPromptProducts(userChoice);
 
     let keepShopping = keepShoppingQuestion();
@@ -109,6 +112,17 @@ export function productSelectionFlow() {
       stopShopping = true;
     }
   }
+}
+export function showPromptProducts(category) {
+  // PASO 9: con la categoria que recibimos por parametros, llamamos a la funcion que filtra los productos por categoria,
+  // y guardamos el resultado en la variable categoryArray.
+  let categoryArray = filterByCategory(category);
+// PASO 11: LLamamos a la funcion que arma el pront de catalogo, pasando como parametro 
+// los productos filtrados por categoria, usamos el stringresultado de esta funcion para mostrar el prompt
+  let selectedProductId = prompt(armarMensajeParaPromptCatalogo(categoryArray));
+// 
+  agregarAlCarrito(selectedProductId);
+  console.log(carrito)
 }
 
 function armarMensajeParaPromptCatalogo(array) {
@@ -123,14 +137,6 @@ function armarMensajeParaPromptCatalogo(array) {
   return stringCatalogoAutomatico;
 }
 
-export function showPromptProducts(category) {
-  let categoryArray = filterByCategory(category);
-  console.log({ categoryArray })
-
-  let selectedProductId = prompt(armarMensajeParaPromptCatalogo(categoryArray));
-
-  agregarAlCarrito(selectedProductId);
-}
 
 export function keepShoppingQuestion() {
   let keepShopping = prompt(`
@@ -145,13 +151,18 @@ export function keepShoppingQuestion() {
 
 // Asi es el filtrado por categoria
 export function filterByCategory(category) {
+  // PASO 10: REcibimos una categoria por parametros y usamos el metodo de aray filter 
+  // para separar los productos de la categoria elegida. Guardamos el resultado de filter en una variable(filteredProducts).
+  // devolvemos la variable con los productos filtrados
   let filteredProducts = arrayProductos.filter(
     (item) => item.categoryId === Number(category)
   );
   return filteredProducts;
 }
 
-export function calculateMediodepago(medioDePago) {
+export function calculateMediodepago(medioDePago, precioTotal) {
+let mediodepagoResult 
+
   switch (medioDePago) {
     case "1":
       let cuotasSinInteres = precioTotal / 3;
@@ -181,19 +192,27 @@ export function calculateMediodepago(medioDePago) {
       alert(`Error al calcular el pago`);
       break;
   }
-
+return mediodepagoResult
 }
+
+function buscarProducto(id) {
+  let producto = arrayProductos.find((item) => item.id === Number(id));
+  console.log(producto)
+  return producto;
+}
+
 
 function agregarAlCarrito(id) {
   carrito.push(buscarProducto(id));
 }
 
-// console.log(showPromptProducts(1))
 
-//   let stringParaMostrarUnProducto = `${arrayProductos[3].id}. ${arrayProductos[3].name} - Precio: $${arrayProductos[3].price} \n`;
+export function calculateTotalPrice () {
+let totalPrice = 0;
+console.log(carrito);
+for (let i = 0; i < carrito.length; i++){
+  totalPrice = totalPrice + carrito[i].price;
+}
 
-//   let stringNormal = arrayProductos[3].id + '. ' + arrayProductos[3].name + ' - Precio: $' + arrayProductos[3].price + '\n' + arrayProductos[3].id + '. ' + arrayProductos[3].name + ' - Precio: $' + arrayProductos[3].price
-
-//   //console.log(stringNormal);
-
-// console.log({carrito})
+return totalPrice;
+}
