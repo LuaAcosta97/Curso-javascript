@@ -22,7 +22,7 @@ export const arrayProductos = [
   },
   {
     name: "Remera musculosa",
-    price: 800,
+    price: 3800,
     stock: 5,
     description: "azul con volados",
     talle: "Talle: 2",
@@ -31,10 +31,10 @@ export const arrayProductos = [
     id: 3,
   },
   {
-    name: "Short tipo pollera color nude",
-    price: 400,
+    name: "Short tipo pollera ",
+    price: 6400,
     stock: 5,
-    description: "Calcetines de lana",
+    description: "color nude",
     talle: "Talle: 3",
     category: "verano",
     categoryId: 1,
@@ -42,30 +42,30 @@ export const arrayProductos = [
   },
   {
     name: "Pantalon ancho",
-    price: 700,
+    price: 12500,
     stock: 4,
-    description: "Furore de colores",
+    description: "Furor de colores",
     talle: "Unico",
     category: "otoño",
     categoryId: 2,
     id: 6,
   },
   {
-    name: "Bikini azul metalizado ",
-    price: 800,
+    name: "Bikini metalizado ",
+    price: 4900,
     stock: 8,
-    description: "blanca con volados",
-    talle: "Talle: 3",
+    description: "azul metalizado",
+    talle: "Talle: 2",
     category: "verano",
     categoryId: 1,
     id: 7,
   },
   {
     name: "Vestido enterizo transparente ",
-    price: 800,
+    price: 6600,
     stock: 8,
     description: "blanca con volados",
-    talle: "Talle: 3",
+    talle: "Talle: 2",
     category: "verano",
     categoryId: 1,
     id: 8,
@@ -75,7 +75,7 @@ export const arrayProductos = [
     price: 6900,
     stock: 3,
     description: "blanca y beige con volados",
-    talle: "Talle: 3",
+    talle: "Talle: 2",
     category: "otoño",
     categoryId: 2,
     id: 9,
@@ -85,7 +85,7 @@ export const arrayProductos = [
     price: 6900,
     stock: 8,
     description: "cuadros azules, gris y blanco",
-    talle: "Talle: 3",
+    talle: "Talle: 1",
     category: "otoño",
     categoryId: 2,
     id: 10,
@@ -124,6 +124,8 @@ export function showPromptProducts(category) {
   agregarAlCarrito(selectedProductId);
   console.log(carrito)
 }
+
+
 
 function armarMensajeParaPromptCatalogo(array) {
   let stringCatalogoAutomatico = `Elija el producto que desea comprar, escriba el numero correspondiente:
@@ -192,7 +194,7 @@ let mediodepagoResult
       alert(`Error al calcular el pago`);
       break;
   }
-return mediodepagoResult
+return mediodepagoResult;
 }
 
 function buscarProducto(id) {
